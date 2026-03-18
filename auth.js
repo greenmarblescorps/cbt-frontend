@@ -1,6 +1,6 @@
 // CONFIGURATION
 // CHANGE THIS URL TO YOUR RENDER BACKEND URL BEFORE DEPLOYING
-const API_URL = 'http://localhost:5000/api'; 
+const API_URL = 'https://green-marbles-backend.onrender.com/api'; 
 
 // Toast Helper
 function showToast(message, type = 'success') {
