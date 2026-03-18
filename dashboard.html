@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="overlay" style="padding: 20px; align-items: flex-start;">
+    <nav style="width: 100%; max-width: 1000px; display: flex; justify-content: space-between; margin-bottom: 20px;">
+      <div class="logo">Green Marbles</div>
+      <button onclick="logout()" style="width: auto; padding: 10px 20px; background: #e74c3c;">Logout</button>
+    </nav>
+
+    <div class="container" style="max-width: 1000px;">
+      <div id="profile-section">
+        <h2>Welcome, <span id="nameDisplay"></span></h2>
+        <p>Department: <b id="deptDisplay"></b></p>
+        <p>Exam ID: <b id="examIdDisplay"></b></p>
+      </div>
+
+      <div class="dash-grid">
+        <div class="card">
+          <h3>Start Exam</h3>
+          <p>Select a subject to begin</p>
+          <select id="subjectSelect" style="margin: 10px 0;"></select>
+          <button onclick="startExam()">Start Exam</button>
+        </div>
+        <div class="card">
+          <h3>Registration Slip</h3>
+          <p>Download your exam slip</p>
+          <button onclick="downloadSlip()">Download PDF</button>
+        </div>
+        <div class="card">
+          <h3>View Results</h3>
+          <p>Check your past scores</p>
+          <button onclick="loadResults()" style="background: #3498db;">View Results</button>
+        </div>
+      </div>
+
+      <div id="resultsArea" style="margin-top: 30px; display:none;">
+        <h3>Your Results</h3>
+        <table>
+          <thead>
+            <tr><th>Subject</th><th>Score</th><th>Date</th><th>Action</th></tr>
+          </thead>
+          <tbody id="resultsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

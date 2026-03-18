@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Engine</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background: #f4f7f6;">
+  <div class="overlay" style="align-items: flex-start; padding-top: 50px;">
+    <div class="container" style="max-width: 800px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 id="examSubjectTitle"></h2>
+        <div class="timer" id="timer">30:00</div>
+      </div>
+      
+      <div class="question-box">
+        <p style="font-weight: bold; margin-bottom: 10px;">Question <span id="qNum">1</span> of <span id="qTotal"></span></p>
+        <p id="questionText" style="font-size: 1.2rem; margin-bottom: 20px;"></p>
+        
+        <div id="optionsContainer" class="options"></div>
+
+        <div class="nav-btns">
+          <button id="prevBtn" onclick="changeQuestion(-1)" style="background: #95a5a6;">Previous</button>
+          <button id="nextBtn" onclick="changeQuestion(1)">Next</button>
+          <button id="submitBtn" onclick="submitExam()" style="background: #e74c3c; display:none;">Submit Exam</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="js/auth.js"></script>
+  <script src="js/exam.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .admin-nav button { background: #34495e; margin-right: 10px; width: auto; padding: 10px 20px; }
+    .admin-section { display: none; }
+  </style>
+</head>
+<body>
+  <div id="adminLogin" class="overlay" style="background: #34495e;">
+    <div class="container">
+      <h2 style="color: white;">Admin Login</h2>
+      <form onsubmit="adminLogin(event)">
+        <div class="form-group">
+          <input type="password" id="adminPass" placeholder="Enter Admin Password" style="background: white;">
+        </div>
+        <button type="submit">Enter</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="adminDash" style="display: none; padding: 20px;">
+    <nav class="admin-nav" style="margin-bottom: 20px;">
+      <button onclick="showSection('students')">Students</button>
+      <button onclick="showSection('questions')">Questions</button>
+      <button onclick="adminLogout()" style="float:right; background:#e74c3c;">Logout</button>
+    </nav>
+
+    <div id="studentsSection" class="admin-section container">
+      <h2>Registered Students</h2>
+      <table>
+        <thead><tr><th>Name</th><th>Dept</th><th>Exam ID</th><th>Action</th></tr></thead>
+        <tbody id="studentsTable"></tbody>
+      </table>
+    </div>
+
+    <div id="questionsSection" class="admin-section container">
+      <div style="display:flex; justify-content:space-between;">
+        <h2>Question Bank</h2>
+        <button onclick="openModal()" style="width:auto;">Add Question</button>
+      </div>
+      <table>
+        <thead><tr><th>Subject</th><th>Question</th><th>Action</th></tr></thead>
+        <tbody id="questionsTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 id="modalTitle">Add Question</h3>
+      <form onsubmit="saveQuestion(event)">
+        <input type="hidden" id="qId">
+        <div class="form-group">
+          <select id="qDept">
+            <option value="Science">Science</option>
+            <option value="Art">Art</option>
+            <option value="Commercial">Commercial</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="text" id="qSubject" placeholder="Subject (e.g. Mathematics)">
+        </div>
+        <div class="form-group">
+          <textarea id="qText" style="width:100%; height:80px;" placeholder="Question Text"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="text" id="qOptions" placeholder="Options separated by comma (A,B,C,D)">
+        </div>
+        <div class="form-group">
+          <input type="text" id="qAnswer" placeholder="Correct Answer (e.g. A)">
+        </div>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
